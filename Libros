@@ -1,0 +1,31 @@
+CÓDIGO,TÍTULO,AUTOR,GENEROS,PUNTAJE,CANTIDAD
+L001,1984,George Orwell,Ciencia ficción,4.8,5
+L002,Cien años de soledad,Gabriel García Márquez,Drama,4.7,12
+L003,Don Quijote de la Mancha,Miguel de Cervantes,Clásico,4.9,21
+L004,Orgullo y prejuicio,Jane Austen,Romance,4.5,6
+L005,Matar a un ruiseñor,Harper Lee,Drama,4.6,3
+L006,El gran Gatsby,F. Scott Fitzgerald,Clásico,4.3,12
+L007,Crimen y castigo,Fyodor Dostoevsky,Filosófico,4.7,8
+L008,Moby-Dick,Herman Melville,Aventura,4.1,2
+L009,La Odisea,Homero,Épico,4.5,4
+L010,El amor en los tiempos del cólera,Gabriel García Márquez,Romance,4.4,6
+L011,El guardián entre el centeno,J.D. Salinger,Drama,4.2,7
+L012,Los miserables,Victor Hugo,Histórico,4.8,5
+L013,En busca del tiempo perdido,Marcel Proust,Filosófico,4.0,2
+L014,Fahrenheit 451,Ray Bradbury,Ciencia ficción,4.6,11
+L015,El señor de los anillos,J.R.R. Tolkien,Fantasía,4.9,16
+L016,Hamlet,William Shakespeare,Tragedia,4.4,10
+L017,El alquimista,Paulo Coelho,Ficción,4.3,14
+L018,El viejo y el mar,Ernest Hemingway,Aventura,4.1,12
+L019,La metamorfosis,Franz Kafka,Fantasía,4.2,9
+L020,El nombre de la rosa,Umberto Eco,Misterio,4.5,7
+L021,El libro Troll,El Rubius,Humor,4.0,6
+L022,Los secretos de YouTube,TheGrefg,Biografía,4.8,3
+L023,Ventanas de Manhattan,Antonio Muñoz,Ficción,3.8,5
+L024,Historia de dos ciudades,Charles Dickens,Novela,4.3,8
+L025,El principito,Antoine de Saint-Exupéry,Fábula,4.6,15
+L026,El hobbit,J. R. R. Tolkien,Novela,4.4,8
+L027,Sueño en el pabellón rojo,Cao Xueqin,Ficción,4.5,15
+L028,Las aventuras de Alicia en el país de las maravillas,Lewis Carroll,Fantasía,4.6,9
+L029,El león La bruja y el armario,C. S. Lewis,Novela,4.8,12
+L030,El código Da Vinci,Dan Brown,Misterio,4.6,6

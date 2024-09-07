@@ -139,16 +139,28 @@ public class Biblioteca {
         }
     }
 
+
     // Sobrecarga 2: Buscar libro por género
     public void buscarLibro(String genero, boolean porGenero) {
         if (porGenero) {
-            List<Libro> librosDelGenero = librosPorGenero.get(genero);
-            if (librosDelGenero != null) {
-                System.out.println("Libros encontrados en el género: " + genero);
-                for (Libro libro : librosDelGenero) {
-                    mostrarLibro(libro);
+            boolean generoEncontrado = false;
+            // Iteramos sobre el conjunto de entradas del mapa
+            for (Map.Entry<String, List<Libro>> entry : librosPorGenero.entrySet()) {
+                String generoActual = entry.getKey();
+                List<Libro> librosEnGenero = entry.getValue();
+
+                // Comparar el género actual con el que buscamos
+                if (generoActual.equalsIgnoreCase(genero)) {
+                    System.out.println("Libros encontrados en el género: " + generoActual);
+                    for (Libro libro : librosEnGenero) {
+                        mostrarLibro(libro);
+                    }
+                    generoEncontrado = true;
+                    break;
                 }
-            } else {
+            }
+        
+            if (!generoEncontrado) {
                 System.out.println("No se encontraron libros para el género: " + genero);
             }
         }

@@ -24,6 +24,7 @@ public class Entrega_Final {
         do {
             try {
                 // Muestra el menú
+                System.out.println("Gestión de Ventas en una Librería");
                 System.out.println("Menú:");
                 System.out.println("1. Insercion libro");
                 System.out.println("2. Edicion libro");
@@ -42,7 +43,6 @@ public class Entrega_Final {
                         biblioteca.agregarLibro();
                         break;
                     case 2:
-                        //editarLibro(usuario, biblioteca);
                         // Aquí iría la lógica para editar un libro
                         System.out.println("Funcionalidad de editar aún no implementada.");
                         break;
@@ -92,48 +92,6 @@ public class Entrega_Final {
     private static void limpiarPantalla() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
-        }
-    }
-    
-    private static void editarLibro(BufferedReader usuario, Biblioteca biblioteca) throws IOException {
-        System.out.print("Ingrese el código del libro que desea editar: ");
-        String codigo = usuario.readLine();
-
-        Libro libro = biblioteca.getLibro(codigo);
-        if (libro != null) {
-            System.out.println("Libro encontrado:");
-            System.out.println(libro);
-
-            System.out.println("Seleccione el atributo a editar:");
-            System.out.println("1. Puntaje");
-            System.out.println("2. Cantidad");
-            System.out.print("Ingrese su opción: ");
-
-            int opcionEdicion = Integer.parseInt(usuario.readLine());
-
-            switch (opcionEdicion) {
-                case 1:
-                    System.out.print("Ingrese el nuevo puntaje: ");
-                    double nuevoPuntaje = Double.parseDouble(usuario.readLine());
-                    libro.actualizar(nuevoPuntaje);
-                    break;
-                case 2:
-                    System.out.print("Ingrese la nueva cantidad: ");
-                    int nuevaCantidad = Integer.parseInt(usuario.readLine());
-                    libro.setCantidad(nuevaCantidad);
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
-                    return;
-            }
-
-            System.out.println("Libro actualizado:");
-            System.out.println(libro);
-
-            // Actualiza el archivo CSV
-            // biblioteca.actualizarArchivo();
-        } else {
-            System.out.println("Libro no encontrado con el código: " + codigo);
         }
     }
 }

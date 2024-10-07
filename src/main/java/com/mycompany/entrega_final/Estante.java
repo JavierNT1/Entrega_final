@@ -40,6 +40,16 @@ public class Estante {
         return libros;
     }
 
+    // Método para buscar un libro por su código
+    public Libro buscarLibroPorCodigo(String codigo) {
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) { // Asegúrate de que getCodigo() devuelva un String
+                return libro;
+            }
+        }
+        return null; // Devuelve null si no se encuentra el libro
+    }
+    
     @Override
     public String toString() {
         return "Estante{" + "codigo=" + codigo + ", nombre=" + nombre + ", libros=" + libros + '}';

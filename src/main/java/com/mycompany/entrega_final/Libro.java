@@ -94,6 +94,12 @@ public class Libro {
         this.cantidad = nuevaCantidad;
     }
     
+    public void reducirCantidad(int cantidadVendida) {
+        if (cantidad >= cantidadVendida) {
+            cantidad -= cantidadVendida;
+        }
+    }
+    
     // Método para mostrar la información del libro
     public void mostrarInfo() {
         System.out.println("Código: " + codigo);
@@ -105,7 +111,7 @@ public class Libro {
     }
 
     public String datos() {
-        return String.format("%s,%s,%s,%s,%.1f,%d", codigo, titulo, autor, genero, puntaje, cantidad);
+        return String.format("%s,%s,%s,%s,%s,%d", codigo, titulo, autor, genero, String.format("%.1f", puntaje).replace(',', '.'), cantidad);
     }
 }
 

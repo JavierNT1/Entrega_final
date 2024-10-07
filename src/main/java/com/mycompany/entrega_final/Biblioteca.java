@@ -15,12 +15,12 @@ import java.util.*;
 public class Biblioteca {
     private Map<Integer, Estante> estantes;
     private Map<String, Cliente> clientes;
-    private List<Venta> ventas;
+    private Map<String, Venta> ventas; 
     
     public Biblioteca() {
         this.estantes = new HashMap<>();
         this.clientes = new HashMap<>();
-        this.ventas = new ArrayList<>();
+        this.ventas = new HashMap<>();
     }
 
     public void agregarEstante(Estante estante) {
@@ -188,24 +188,39 @@ public class Biblioteca {
     }
     
     public void cargarClientesDesdeArchivo(String rutaArchivo) {
-    try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split(",");
-            String id = datos[0];
-            String nombre = datos[1];
-            clientes.put(id, new Cliente(id, nombre));
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            // Leer la primera línea para omitir los encabezados
+            if ((linea = br.readLine()) != null) {
+                // Procesar encabezados si es necesario
+            }
+
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                String id = datos[0];
+                String nombre = datos[1];
+                clientes.put(id, new Cliente(id, nombre));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
+
 
     public void guardarClientesEnArchivo(String rutaArchivo) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
+        try {
+            // Usar append para no sobrescribir el archivo
+            BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, false)); // Cambia 'true' a 'false' para sobrescribir
+            // Escribir el encabezado solo si el archivo está vacío
+            if (new File(rutaArchivo).length() == 0) {
+                bw.write("ID_CLIENTE,NOMBRE\n"); // Escribir encabezados
+            }
+        
+            // Escribir cada cliente en el archivo
             for (Cliente cliente : clientes.values()) {
                 bw.write(cliente.getId() + "," + cliente.getNombre() + "\n");
             }
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -217,11 +232,18 @@ public class Biblioteca {
 
     public void registrarVenta(String idVenta, String idCliente, String codigoLibro, int cantidad) {
         Cliente cliente = clientes.get(idCliente);
-        Libro libro = buscarLibroPorCodigo(codigoLibro);
-        
+    
         if (cliente == null) {
             System.out.println("Cliente no encontrado.");
             return;
+        }
+
+        Libro libro = null; // Inicializa la variable libro
+        for (Estante estante : estantes.values()) { // Busca el libro en los estantes
+            libro = estante.buscarLibroPorCodigo(codigoLibro); // Asumiendo que hay un método para buscar por código
+            if (libro != null) {
+                break; // Sale del bucle si el libro ha sido encontrado
+            }
         }
 
         if (libro == null || libro.getCantidad() < cantidad) {
@@ -230,9 +252,80 @@ public class Biblioteca {
         }
 
         Venta venta = new Venta(idVenta, cliente, libro, cantidad);
-        ventas.add(venta);
-        libro.reducirCantidad(cantidad);
+        ventas.put(idVenta, venta); // Agregado al mapa
+        libro.setCantidad(libro.getCantidad() - cantidad); // Reduce la cantidad correctamente
+        guardarLibrosEnArchivo("libros.csv");
         System.out.println("Venta registrada: " + idVenta);
+    }
+
+
+    public Libro buscarLibroPorTitulo(String titulo) {
+        for (Estante estante : estantes.values()) {
+            for (Libro libro : estante.getLibros()) {
+                if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                    return libro;
+                }
+            }
+        }
+        return null; // Devuelve null si no se encuentra el libro
+    }
+
+    public void cargarVentasDesdeArchivo(String rutaArchivo) {
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            br.readLine(); // Omitir encabezados
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                String idVenta = datos[0];
+                String idCliente = datos[1];
+                String nombreCliente = datos[2];
+                String tituloLibro = datos[3];
+                int cantidad = Integer.parseInt(datos[4]);
+
+                // Buscar el cliente en el mapa de clientes
+                Cliente cliente = clientes.get(idCliente);
+                if (cliente == null) {
+                    System.out.println("Cliente con ID " + idCliente + " no encontrado. Saltando venta.");
+                    continue; // Si no encuentra el cliente, salta esta venta
+                }
+
+                // Buscar el libro por título
+                Libro libro = buscarLibroPorTitulo(tituloLibro);
+                if (libro == null) {
+                    System.out.println("Libro con título " + tituloLibro + " no encontrado. Saltando venta.");
+                    continue; // Si no encuentra el libro, salta esta venta
+                }
+
+                // Crear la venta y agregarla al mapa
+                Venta venta = new Venta(idVenta, cliente, libro, cantidad);
+                ventas.put(idVenta, venta);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void guardarVentasEnArchivo(String rutaArchivo) {
+        try {
+            // Usar append para no sobrescribir el archivo
+            BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, true)); // Cambia 'false' a 'true' para no sobrescribir
+            // Escribir el encabezado solo si el archivo está vacío
+            if (new File(rutaArchivo).length() == 0) {
+                bw.write("ID_VENTA,ID_CLIENTE,NOMBRE_CLIENTE,TITULO_LIBRO,CANTIDAD\n"); // Escribir encabezados
+            }
+
+            // Escribir cada venta en el archivo
+            for (Venta venta : ventas.values()) {
+                bw.write(venta.getId() + "," + 
+                venta.getCliente().getId() + "," +
+                venta.getCliente().getNombre() + "," +
+                venta.getLibro().getTitulo() + "," +
+                venta.getCantidad() + "\n");
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Libro buscarLibroPorCodigo(String codigo) {
@@ -243,21 +336,6 @@ public class Biblioteca {
             }
         }
         return null; // Devuelve null si no se encuentra el libro
-    }
-
-    public void guardarVentasEnArchivo(String rutaArchivo) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo))) {
-            bw.write("ID_VENTA,ID_CLIENTE,NOMBRE_CLIENTE,TITULO_LIBRO,CANTIDAD\n"); // Encabezados
-            for (Venta venta : ventas) {
-                bw.write(venta.getId() + "," + 
-                      venta.getCliente().getId() + "," +
-                      venta.getCliente().getNombre() + "," +
-                      venta.getLibro().getTitulo() + "," +
-                      venta.getCantidad() + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     
     public void agregarLibro() {
@@ -308,4 +386,49 @@ public class Biblioteca {
 
         System.out.println("Libro agregado y guardado exitosamente.");
     }  
+    
+    public void generarReporteVentas(String nombreArchivo) {
+        if (ventas.isEmpty()) {
+            System.out.println("No hay ventas registradas para generar un reporte.");
+            return;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            // Escribir encabezados
+            writer.write("REPORTE DE VENTAS");
+            writer.newLine();
+            writer.write("------------------------------------------------");
+            writer.newLine();
+
+            // Encabezados para el reporte de ventas
+            writer.write("ID_VENTA,ID_CLIENTE,NOMBRE_CLIENTE,CÓDIGO_LIBRO,TÍTULO_LIBRO,CANTIDAD,PUNTAJE");
+            writer.newLine();
+
+            for (Venta venta : ventas.values()) {
+                Cliente cliente = venta.getCliente(); // Obtener el cliente de la venta
+                Libro libro = venta.getLibro(); // Obtener el libro de la venta
+
+                if (cliente == null || libro == null) {
+                    System.out.println("Error: Cliente o libro no encontrado para la venta con ID: " + venta.getId());
+                    continue; // Saltar esta venta si hay datos faltantes
+                }
+
+                // Crear la línea del reporte
+                String linea = venta.getId() + "," +
+                               cliente.getId() + "," +
+                               cliente.getNombre() + "," +
+                               libro.getCodigo() + "," +
+                               libro.getTitulo() + "," +
+                               venta.getCantidad() + "," +
+                               libro.getPuntaje(); // Agregar puntaje del libro
+
+                writer.write(linea);
+                writer.newLine();
+            }
+
+            System.out.println("Reporte de ventas generado en " + nombreArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al generar el reporte: " + e.getMessage());
+        }
+    }    
 }

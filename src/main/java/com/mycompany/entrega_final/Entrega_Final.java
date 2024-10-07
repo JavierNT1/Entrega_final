@@ -29,7 +29,8 @@ public class Entrega_Final {
             System.out.println("4. Eliminar libro");
             System.out.println("5. Registrar cliente");
             System.out.println("6. Registrar venta");
-            System.out.println("7. Salir");
+            System.out.println("7. Reporte");
+            System.out.println("8. Salir");
             System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
@@ -79,12 +80,17 @@ public class Entrega_Final {
                     break;
                     
                 case 7:
+                    biblioteca.cargarVentasDesdeArchivo("Ventas.csv");
+                    biblioteca.generarReporteVentas("Reporte.csv");
+                    break;
+                    
+                case 8:
                     System.out.println("Saliendo del programa...");
                     break;
                     
                 default:
                     System.out.println("Opción inválida. Intente nuevamente.");
             }
-        } while (opcion != 7);
+        } while (opcion != 8);
     }
 }

@@ -93,13 +93,7 @@ public class Libro {
     public void actualizar(int nuevaCantidad) {
         this.cantidad = nuevaCantidad;
     }
-    
-    public void reducirCantidad(int cantidadVendida) {
-        if (cantidad >= cantidadVendida) {
-            cantidad -= cantidadVendida;
-        }
-    }
-    
+        
     // Método para mostrar la información del libro
     public void mostrarInfo() {
         System.out.println("Código: " + codigo);

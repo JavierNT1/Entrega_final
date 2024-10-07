@@ -13,7 +13,7 @@ public class Libro {
     private String codigo;
     private String titulo;
     private String autor;
-    private String genero; // Nuevo campo para el género del libro
+    private String genero; 
     private double puntaje;
     private int cantidad;
 
@@ -22,7 +22,7 @@ public class Libro {
         this.codigo = "";
         this.titulo = "";
         this.autor = "";
-        this.genero = ""; // Inicializar género como cadena vacía
+        this.genero = ""; 
         this.puntaje = 0.0;
         this.cantidad = 0;
     }
@@ -32,7 +32,7 @@ public class Libro {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autor = autor;
-        this.genero = genero; // Asignar género
+        this.genero = genero; 
         this.puntaje = puntaje;
         this.cantidad = cantidad;
     }

@@ -1,10 +1,24 @@
-ID_CLIENTE,NOMBRE
-001,Juan 
-002,Ana 
-003,Perez
-004,López
-005,Mia
-006,Martin
-007,Lucho
-008,Luz
-009,Lillo
+ID_CLIENTE,NOMBRE,CORREO,CONTRASEÑA
+020,Diego Romero,diego.romero@example.com,123456
+010,Pedro Castillo,pedro.castillo@example.com,123456
+021,Luis Vera,luis.vera@example.com,123456
+011,Claudia Ortega,claudia.ortega@example.com,123456
+022,Luiz Diaz,luiz.diaz@example.com,123456
+001,Juan Pérez,juan.perez@example.com,123456
+012,Sergio Silva,sergio.silva@example.com,123456
+023,Pedro Porro,pedro.porro@example.com,123456
+002,Ana Gómez,ana.gomez@example.com,123456
+013,Isabel Vega,isabel.vega@example.com,123456
+003,Carlos López,carlos.lopez@example.com,123456
+014,Ricardo Morales,ricardo.morales@example.com,123456
+004,Marta Rodríguez,marta.rodriguez@example.com,123456
+015,Patricia Cruz,patricia.cruz@example.com,123456
+005,Mía Fernández,mia.fernandez@example.com,123456
+016,Fernando Ríos,fernando.rios@example.com,123456
+006,Martín Sánchez,martin.sanchez@example.com,123456
+017,Verónica Ruiz,veronica.ruiz@example.com,123456
+007,Lucho Martínez,lucho.martinez@example.com,123456
+018,Andrés Mendez,andres.mendez@example.com,123456
+008,Luz Ramírez,luz.ramirez@example.com,123456
+019,Carmen Soto,carmen.soto@example.com,123456
+009,Lillo Torres,lillo.torres@example.com,123456

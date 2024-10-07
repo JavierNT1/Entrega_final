@@ -1,51 +1,51 @@
 CÓDIGO,TÍTULO,AUTOR,GÉNEROS,PUNTAJE,CANTIDAD,CÓDIGO_ESTANTE,NOMBRE_ESTANTE
-L001,1984,GeorgeOrwell,Cienciaficción,4.8,5,001,EstanteCienciaFicción
-L002,Cienañosdesoledad,GabrielGarcíaMárquez,Drama,4.7,12,002,EstanteDrama
-L003,DonQuijotedelamancha,MigueldeCervantes,Clásico,4.9,21,003,EstanteClásicos
-L004,Orgulloyprejuicio,JaneAusten,Romance,4.5,6,004,EstanteRomance
-L005,Matar a unruiseñor,HarperLee,Drama,4.6,3,002,EstanteDrama
-L006,Elgrangatsby,F.ScottFitzgerald,Clásico,4.3,12,003,EstanteClásicos
-L007,Crimenycastigo,FyodorDostoevsky,Filosófico,4.7,8,005,EstanteFilosófico
-L008,Moby-Dick,HermanMelville,Aventura,4.1,2,006,EstanteAventura
-L009,LaOdisea,Homero,Épico,4.5,4,007,EstanteÉpico
-L010,Elamorenlostiemposdelcólera,GabrielGarcíaMárquez,Romance,4.4,6,004,EstanteRomance
-L011,Elguardiánentreelcenteno,J.D.Salinger,Drama,4.2,7,002,EstanteDrama
-L012,Losmiserables,VictorHugo,Histórico,4.8,5,008,EstanteHistórico
-L013,Enbuscadeltiempperdido,MarcelProust,Filosófico,4.0,2,005,EstanteFilosófico
-L014,Fahrenheit451,RayBradbury,Cienciaficción,4.6,11,001,EstanteCienciaFicción
-L015,Elseñordelosanillos,J.R.R.Tolkien,Fantasía,4.9,16,009,EstanteFantasía
-L016,Hamlet,WilliamShakespeare,Tragedia,4.4,10,010,EstanteTragedia
-L017,Elalquimista,PauloCoelho,Ficción,4.3,14,011,EstanteFicción
-L018,Elviejoelyelmar,ErnestHemingway,Aventura,4.1,12,006,EstanteAventura
-L019,LaMetamorfosis,FranzKafka,Fantasía,4.2,9,009,EstanteFantasía
-L020,Elnombredelarosa,UmbertoEco,Misterio,4.5,7,012,EstanteMisterio
-L021,EllibroTroll,ElRubius,Humor,4.0,6,013,EstanteHumor
-L022,LossecretosdeYouTube,TheGrefg,Biografía,4.8,3,014,EstanteBiografía
-L023,VentanasdeManhattan,AntonioMuñoz,Ficción,3.8,5,011,EstanteFicción
-L024,Historiadedosciudades,CharlesDickens,Novela,4.3,8,015,EstanteNovela
-L025,Elprincipito,AntoinedeSaint-Exupéry,Fábula,4.6,15,016,EstanteFábula
-L026,Elhobbit,J.R.R.Tolkien,Novela,4.4,8,015,EstanteNovela
-L027,Sueñoenelpabellónrojo,CaoXueqin,Ficción,4.5,15,011,EstanteFicción
-L028,LasaventurasdeAliciaenelpaísdelasmaravillas,LewisCarroll,Fantasía,4.6,9,009,EstanteFantasía
-L029,ElleónLabrujayelarmario,C.S.Lewis,Novela,4.8,12,015,EstanteNovela
-L030,ElcódigoDaVinci,DanBrown,Misterio,4.6,6,012,EstanteMisterio
-L031,Elpadrino,MarioPuzo,Policial,4.7,18,017,EstantePolicial
-L032,Azabache,AnnaSewell,Ficción,4.1,7,011,EstanteFicción
-L033,AnaladTejasVerdes,LucyMaudMontgomery,Novela,4.8,12,015,EstanteNovela
-L034,TheCommonSenseBookofBabyandChildCare,BenjaminSpock,Educación,3.7,5,018,EstanteEducación
-L035,Heidi,JohannaSpyri,Novela,4.2,4,015,EstanteNovela
-L036,CaminoaJesús,EllenG.White,Histórico,4.9,14,008,EstanteHistórico
-L037,Elmundodesofía,JosteinGaarder,Novela,4.2,7,015,EstanteNovela
-L038,LibRORojodeMao,HouBoyMaoZedong,Filosofía,2.8,1,019,EstanteFilosofía
-L039,HarryPoterylapiedraFilozofal,J.K.Rowling,Fantasía,4.9,13,009,EstanteFantasía
-L040,It,StephenKing,Terror,4.8,17,020,EstanteTerror
-L041,TheStand,StephenKing,Terror,4.1,8,020,EstanteTerror
-L042,Ella,H.RiderHaggard,Romance,4.2,5,004,EstanteRomance
-L043,HarryPoterylasreliquiasdelamuerte,J.K.Rowling,Fantasía,4.8,19,009,EstanteFantasía
-L044,ElcuentodePedroconejo,BeatrixPotter,LiteraturaInfantil,4.4,7,021,EstanteLiteraturaInfantil
-L045,Ángelesydemonios,DanBrown,Suspenso,4.2,6,022,EstanteSuspenso
-L046,Guerraypaz,LeónTolstói,Novela,3.8,2,015,EstanteNovela
-L047,Loqueelvientoesllevó,MargaretMitchell,Novela,4.3,6,015,EstanteNovela
-L048,Piensayhazterico,NapoleonHill,Autoayuda,4.8,12,23,EstanteAutoayuda
-L049,Loshombresquenolamabanalasmujeres,StiegLarsson,Misterio,4.5,10,012,EstanteMisterio
-L050,Princesamecánica,CassandraClare,Fantasía,4.9,17,009,EstanteFantasía
+L001,1984,George Orwell,Ciencia ficción,4.8,6,1,EstanteCienciaFicción
+L014,Fahrenheit 451,Ray Bradbury,Ciencia ficción,4.6,11,1,EstanteCienciaFicción
+L002,Cien años de soledad,Gabriel García Márquez,Drama,4.7,12,2,EstanteDrama
+L005,Matar a un ruiseñor,Harper Lee,Drama,4.6,13,2,EstanteDrama
+L011,El guardián entre el centeno,J.D.Salinger,Drama,4.2,17,2,EstanteDrama
+L003,Don Quijote de la mancha,Miguel de Cervantes,Clásico,4.9,21,3,EstanteClásicos
+L006,El gran gatsby,F.ScottFitzgerald,Clásico,4.3,12,3,EstanteClásicos
+L004,Orgullo y prejuicio,Jane Austen,Romance,4.5,16,4,EstanteRomance
+L010,El amor en los tiempos del cólera,Gabriel García Márquez,Romance,4.4,16,4,EstanteRomance
+L042,Ella,H.RiderHaggard,Romance,4.2,11,4,EstanteRomance
+L007,Crimen y castigo,Fyodor Dostoevsky,Filosófico,4.7,18,5,EstanteFilosófico
+L013,En busca del tiempo perdido,Marcel Proust,Filosófico,4.0,12,5,EstanteFilosófico
+L008,Moby-Dick,Herman Melville,Aventura,4.1,12,6,EstanteAventura
+L018,El viejo el y el mar,Ernest Hemingway,Aventura,4.1,12,6,EstanteAventura
+L009,La Odisea,Homero,Épico,4.5,14,7,EstanteÉpico
+L012,Los miserables,Victor Hugo,Histórico,4.8,15,8,EstanteHistórico
+L036,Camino a Jesús,Ellen G.White,Histórico,4.9,14,8,EstanteHistórico
+L015,El señor de los anillos,J.R.R.Tolkien,Fantasía,4.9,16,9,EstanteFantasía
+L019,La Metamorfosis,Franz Kafka,Fantasía,4.2,19,9,EstanteFantasía
+L028,Las aventuras de Alicia en el país de las maravillas,Lewis Carroll,Fantasía,4.6,14,9,EstanteFantasía
+L039,Harry Poter y la piedra Filozofal,J.K.Rowling,Fantasía,4.9,13,9,EstanteFantasía
+L043,Harry Poter y las reliquias de la muerte,J.K.Rowling,Fantasía,4.8,19,9,EstanteFantasía
+L050,Princesa mecánica,Cassandra Clare,Fantasía,4.9,16,9,EstanteFantasía
+L016,Hamlet,William Shakespeare,Tragedia,4.4,10,10,EstanteTragedia
+L017,El alquimista,Paulo Coelho,Ficción,4.3,14,11,EstanteFicción
+L023,Ventanas de Manhattan,Antonio Muñoz,Ficción,3.8,12,11,EstanteFicción
+L027,Sueño en el pabellón rojo,Cao Xueqin,Ficción,4.5,15,11,EstanteFicción
+L032,Azabache,Anna Sewell,Ficción,4.1,21,11,EstanteFicción
+L020,El nombre de la rosa,Umberto Eco,Misterio,4.5,17,12,EstanteMisterio
+L030,El código Da Vinci,Dan Brown,Misterio,4.6,12,12,EstanteMisterio
+L049,Los hombres que no amaban a las mujeres,Stieg Larsson,Misterio,4.5,14,12,EstanteMisterio
+L021,El libro Troll,ElRubius,Humor,4.0,16,13,EstanteHumor
+L022,Los secretos de YouTube,TheGrefg,Biografía,4.8,13,14,EstanteBiografía
+L024,Historia de dos ciudades,Charles Dickens,Novela,4.3,11,15,EstanteNovela
+L026,El hobbit,J.R.R.Tolkien,Novela,4.4,12,15,EstanteNovela
+L029,El león La bruja y el armario,C.S.Lewis,Novela,4.8,14,15,EstanteNovela
+L033,Ana la de Tejas Verdes,Lucy Maud Montgomery,Novela,4.8,12,15,EstanteNovela
+L035,Heidi,Johanna Spyri,Novela,4.2,15,15,EstanteNovela
+L037,El mundo de sofía,Jostein Gaarder,Novela,4.2,14,15,EstanteNovela
+L046,Guerra y paz,León Tolstói,Novela,3.8,10,15,EstanteNovela
+L047,Lo que el viento se llevó,Margaret Mitchell,Novela,4.3,14,15,EstanteNovela
+L025,El principito,Antoine de Saint-Exupéry,Fábula,4.6,15,16,EstanteFábula
+L031,El padrino,Mario Puzo,Policial,4.7,18,17,EstantePolicial
+L034,The Common Sense Book of Baby and Child Care,Benjamin Spock,Educación,3.7,19,18,EstanteEducación
+L038,Libro Rojo de Mao,Hou Boy Mao Zedong,Filosofía,2.8,15,19,EstanteFilosofía
+L040,It,Stephen King,Terror,4.8,17,20,EstanteTerror
+L041,The Stand,Stephen King,Terror,4.1,12,20,EstanteTerror
+L044,El cuento de Pedro conejo,Beatrix Potter,Literatura Infantil,4.4,9,21,EstanteLiteraturaInfantil
+L045,Ángeles y demonios,Dan Brown,Suspenso,4.2,11,22,EstanteSuspenso
+L048,Piensa y haz te rico,Napoleon Hill,Autoayuda,4.8,15,23,EstanteAutoayuda

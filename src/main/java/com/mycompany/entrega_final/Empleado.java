@@ -8,16 +8,17 @@ package com.mycompany.entrega_final;
  *
  * @author javie
  */
-
-public class Cliente extends Persona {
-    public Cliente(String id, String nombre, String correo, String contraseña) {
+public class Empleado extends Persona {
+    public Empleado(String id, String nombre, String correo, String contraseña) {
         super(id, nombre, correo, contraseña);
     }
-
+    
     @Override
     public void mostrarDetalles() {
-        System.out.println("Detalles del Cliente:");
+        System.out.println("Detalles del Empleado:");
         super.mostrarDetalles();
     }
+    
 }
+
 

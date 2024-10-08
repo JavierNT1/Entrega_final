@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Entrega_Final {
     public static void main(String[] args) {
@@ -83,7 +85,8 @@ public class Entrega_Final {
             System.out.println("5. Registrar cliente");
             System.out.println("6. Registrar venta");
             System.out.println("7. Reporte");
-            System.out.println("8. Salir");
+            System.out.println("8. Filtrar libros por género y puntaje");
+            System.out.println("9. Salir");
             System.out.print("Selecciona una opción: ");
             
             while (!scanner.hasNextInt()) {
@@ -168,8 +171,16 @@ public class Entrega_Final {
 
                     if (!idVentas.contains(idVenta)) {
                         idVentas.add(idVenta);
-                        biblioteca.registrarVenta(idVenta, clienteId, codigoLibroVenta, cantidad);
-                        biblioteca.guardarVentasEnArchivo("Ventas.csv");
+                        try {
+                            biblioteca.registrarVenta(idVenta, clienteId, codigoLibroVenta, cantidad);
+                            biblioteca.guardarVentasEnArchivo("Ventas.csv");
+                        } catch (ClienteNoEncontradoException e) {
+                            System.out.println("Error en la venta: " + e.getMessage());
+                        } catch (LibroNoEncontradoException e) {
+                            System.out.println("Error en la venta: " + e.getMessage());
+                        } catch (InventarioInsuficienteException e) {
+                            System.out.println("Error en la venta: " + e.getMessage());
+                        }
                     }
                     break;
 
@@ -190,13 +201,41 @@ public class Entrega_Final {
                     break;
                     
                 case 8:
-                    System.out.println("Saliendo del programa...");
+                    System.out.print("Ingrese el género a filtrar: ");
+                    String genero = scanner.nextLine();
+
+                    System.out.print("Ingrese el puntaje mínimo: ");
+                    String entradaPuntaje = scanner.nextLine(); // Leer como cadena
+                    double puntajeMinimo;
+
+                    try {
+                        // Reemplazar coma por punto y luego convertir a double
+                        puntajeMinimo = Double.parseDouble(entradaPuntaje.replace(",", "."));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Por favor, ingresa un número válido para el puntaje mínimo.");
+                        break; // Salir del case si hay un error
+                    }
+
+                    // Llamar al método de filtrado
+                    List<Libro> librosFiltrados = biblioteca.filtrarLibrosPorGeneroYPuntaje(genero, puntajeMinimo);
+                    if (!librosFiltrados.isEmpty()) {
+                        System.out.println("\nLibros filtrados:");
+                        for (Libro libro : librosFiltrados) {
+                            libro.mostrarInfo();
+                        }
+                    } else {
+                        System.out.println("No se encontraron libros que coincidan con los criterios.");
+                    }
                     break;
+
+                case 9:
+                    System.out.println("Saliendo del programa...");
+                    break;  
 
                 default:
                     System.out.println("Opción inválida. Intente nuevamente.");
             }
-        } while (opcion != 8);
+        } while (opcion != 9);
 
         scanner.close();
     }

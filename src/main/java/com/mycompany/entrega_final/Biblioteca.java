@@ -40,23 +40,24 @@ public class Biblioteca {
     }
 
     public void mostrarContenido() {
-        for (Estante estante : estantes.values()) {
-            System.out.println(estante);
-        }
-    }
-    
-    public void mostrarContenido1() {
         if (estantes.isEmpty()) {
             System.out.println("No hay estantes disponibles.");
             return; // Sale del método si no hay estantes
         }
 
-        // Itera sobre cada estante en el mapa de estantes
         for (Estante estante : estantes.values()) {
             System.out.println("Estante: " + estante.getNombre() + " (Código: " + estante.getCodigo() + ")");
-            // Itera sobre los libros en cada estante y los imprime
-            for (Libro libro : estante.getLibros()) {
-                System.out.println("  - " + libro.getTitulo() + " por " + libro.getAutor() + " (Género: " + libro.getGenero() + ", Puntaje: " + libro.getPuntaje() + ", Cantidad: " + libro.getCantidad() + ")");
+            List<Libro> libros = estante.getLibros();
+
+            if (libros.isEmpty()) {
+                System.out.println("  No hay libros en este estante.");
+            } else {
+                for (Libro libro : libros) {
+                    System.out.println("  - " + libro.getTitulo() + " por " + libro.getAutor() + 
+                                       " (Género: " + libro.getGenero() + 
+                                       ", Puntaje: " + libro.getPuntaje() + 
+                                       ", Cantidad: " + libro.getCantidad() + ")");
+                }
             }
         }
     }
@@ -335,35 +336,39 @@ public class Biblioteca {
         clientes.putIfAbsent(cliente.getId(), cliente);
     }
 
-    public void registrarVenta(String idVenta, String idCliente, String codigoLibro, int cantidad) {
+    public void registrarVenta(String idVenta, String idCliente, String codigoLibro, int cantidad) 
+            throws ClienteNoEncontradoException, LibroNoEncontradoException,InventarioInsuficienteException {
         Cliente cliente = clientes.get(idCliente);
-    
+
         if (cliente == null) {
-            System.out.println("Cliente no encontrado.");
-            return;
+            throw new ClienteNoEncontradoException("Cliente con ID " + idCliente + " no encontrado.");
         }
 
-        Libro libro = null; // Inicializa la variable libro
-        for (Estante estante : estantes.values()) { // Busca el libro en los estantes
-            libro = estante.buscarLibroPorCodigo(codigoLibro); // Asumiendo que hay un método para buscar por código
+        Libro libro = null;
+        for (Estante estante : estantes.values()) {
+            libro = estante.buscarLibroPorCodigo(codigoLibro);
             if (libro != null) {
-                break; // Sale del bucle si el libro ha sido encontrado
+                break;
             }
         }
 
-        if (libro == null || libro.getCantidad() < cantidad) {
-            System.out.println("Libro no disponible o cantidad insuficiente.");
-            return;
+        if (libro == null) {
+            throw new LibroNoEncontradoException("Libro con código " + codigoLibro + " no encontrado en ningún estante.");
+        }
+
+        if (libro.getCantidad() < cantidad) {
+            throw new InventarioInsuficienteException("Cantidad insuficiente para el libro " + libro.getTitulo() + ".");
         }
 
         Venta venta = new Venta(idVenta, cliente, libro, cantidad);
-        ventas.put(idVenta, venta); // Agregado al mapa
-        libro.setCantidad(libro.getCantidad() - cantidad); // Reduce la cantidad correctamente
+        ventas.put(idVenta, venta);
+        libro.setCantidad(libro.getCantidad() - cantidad);
+
         guardarLibrosEnArchivo("libros.csv");
         guardarVentasEnArchivo("ventas.csv");
-        System.out.println("Venta registrada: " + idVenta);
-    }
 
+        System.out.println("Venta registrada exitosamente: " + idVenta);
+    }
 
     public Libro buscarLibroPorTitulo(String titulo) {
         for (Estante estante : estantes.values()) {
@@ -512,4 +517,20 @@ public class Biblioteca {
         return null; // Retorna null si las credenciales no son válidas
     }
     
+    public List<Libro> filtrarLibrosPorGeneroYPuntaje(String genero, double puntajeMinimo) {
+        List<Libro> librosFiltrados = new ArrayList<>();
+
+        for (Estante estante : estantes.values()) {
+            for (Libro libro : estante.getLibros()) {
+                if (libro.getGenero().equalsIgnoreCase(genero) && libro.getPuntaje() >= puntajeMinimo) {
+                    librosFiltrados.add(libro);
+                }
+            }
+        }
+
+        if (librosFiltrados.isEmpty()) {
+            System.out.println("No se encontraron libros que coincidan con el género y puntaje especificados.");
+        }
+        return librosFiltrados;
+    }
 }

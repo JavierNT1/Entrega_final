@@ -102,10 +102,18 @@ public class Libro {
         System.out.println("Género: " + genero); // Mostrar el género del libro
         System.out.println("Puntaje: " + puntaje);
         System.out.println("Cantidad: " + cantidad);
+        System.out.println("\n");
     }
 
     public String datos() {
         return String.format("%s,%s,%s,%s,%s,%d", codigo, titulo, autor, genero, String.format("%.1f", puntaje).replace(',', '.'), cantidad);
     }
+   
+    @Override
+    public String toString() {
+        return String.format("Título: %s, Autor: %s, Género: %s, Puntaje: %.1f, Cantidad: %d",
+                             titulo, autor, genero, puntaje, cantidad);
+    }
+ 
 }
 
